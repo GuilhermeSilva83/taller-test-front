@@ -1,0 +1,12 @@
+<p>
+  <mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink='/cars' routerLinkActive="active"> Cars </a>
+      <a mat-menu-item routerLink='/config' routerLinkActive="active"> Configuration </a>
+    </mat-menu>
+  </mat-toolbar>
+</p>
+
+<router-outlet></router-outlet>
+
