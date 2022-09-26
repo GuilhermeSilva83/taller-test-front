@@ -15,6 +15,7 @@ import { CarListComponent } from './app/component/list/car-list/car-list.compone
 import { CarDetailComponent } from './app/component/detail/car-detail/car-detail.component';
 
 // Material
+import {MatButtonModule} from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
@@ -25,9 +26,13 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCardModule } from '@angular/material/card';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatDialogModule} from '@angular/material/dialog';
 
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ToastrModule } from 'ngx-toastr';
+import { PriceQuizComponent } from './app/component/dialog/price-quiz/price-quiz.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     CarListComponent,
     CarDetailComponent,
     ConfigurationComponent,
+    PriceQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +49,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    FlexLayoutModule,
+    MatButtonModule,
     MatCardModule,
     MatInputModule,
     MatExpansionModule,
+    MatDialogModule,
     MatDatepickerModule,
     MatMenuModule,
     MatNativeDateModule,
@@ -53,7 +62,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatSelectModule,
     MatTableModule,
     MatToolbarModule,
-    MatSliderModule
+    MatSliderModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [],

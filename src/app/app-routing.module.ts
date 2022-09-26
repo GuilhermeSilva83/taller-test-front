@@ -6,7 +6,8 @@ import { CarListComponent } from './app/component/list/car-list/car-list.compone
 const routes: Routes = [
   // { path: '', component: MainComponent },
   { path: 'cars', component: CarListComponent },
-  { path: 'cars/:id', component: CarDetailComponent }
+  { path: 'cars/:id', component: CarDetailComponent },
+  { path: '**', component: CarListComponent },
 
 ];
 

@@ -20,8 +20,12 @@ export class Entity {
 
 export class Car extends Entity
  {
-    color = ''
+    color = '';
+    doors = 0;
+    year = 0;
     make = null;
+    makeId = 0;
+    price = 0;
 
     constructor() {
         super();

@@ -6,13 +6,13 @@ import { IEntity, OperationResult } from '../models'
 
 export class CrudService<TEntity extends IEntity> {
 
-    url: string;
+    readonly url: string;
     constructor(protected http: HttpClient, protected path: string) {
         this.url = environment.apiUrl + "/" + this.path;
     }
 
     protected GetPath(append: string): string {
-        return this.url =  environment.apiUrl + "/" + this.path + "/" + append;
+        return environment.apiUrl + "/" + this.path + "/" + append;
     }
 
     public async Save(e: TEntity): Promise<OperationResult<TEntity>> {
