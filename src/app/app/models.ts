@@ -32,6 +32,14 @@ export class Car extends Entity
     }
 }
 
+export class  Tuple<T>  {
+    value : T
+    constructor(value : T) {
+        this.value = value
+    }
+}
+
+
 export class Make extends Entity
  {
     cars : Car[] = []

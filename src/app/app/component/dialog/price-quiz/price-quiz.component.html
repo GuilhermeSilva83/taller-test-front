@@ -1,1 +1,31 @@
-<p>price-quiz works!</p>
+<mat-card class="mat-card-form">
+    <mat-card-header>
+        <mat-card-title>
+            Guess the price.
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #form (submit)="Submit()" class="flex-form">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <input matInput placeholder="Price" name="price" [(ngModel)]="price">
+          </mat-form-field>
+
+         <!-- <mat-form-field appearance="fill">
+            <mat-label>Select</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <p>
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+            &nbsp;
+            <button mat-raised-button (click)="Cancel()">Cancel</button>
+          </p>
+          
+        </form>
+    </mat-card-content>
+
+</mat-card>

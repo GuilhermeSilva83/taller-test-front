@@ -4,15 +4,25 @@ import { environment } from 'src/environments/environment';
 import { lastValueFrom, Observable } from 'rxjs';
 import { IEntity, OperationResult } from '../models'
 
-export class CrudService<TEntity extends IEntity> {
 
+export class ServiceBase {
     readonly url: string;
+    
     constructor(protected http: HttpClient, protected path: string) {
         this.url = environment.apiUrl + "/" + this.path;
     }
 
     protected GetPath(append: string): string {
         return environment.apiUrl + "/" + this.path + "/" + append;
+    }
+
+}
+
+export class CrudService<TEntity extends IEntity> extends ServiceBase {
+
+    constructor(http: HttpClient, path: string) {
+        super(http, path);
+        
     }
 
     public async Save(e: TEntity): Promise<OperationResult<TEntity>> {
@@ -36,6 +46,5 @@ export class CrudService<TEntity extends IEntity> {
     public async List(): Promise<TEntity[]> {
         return await lastValueFrom(this.http.get<TEntity[]>(this.url));
     }
-
 }
 

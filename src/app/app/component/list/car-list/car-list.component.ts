@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Car, Make } from 'src/app/app/models';
+import { Car, Make, Tuple } from 'src/app/app/models';
 import { AlertService } from 'src/app/app/service/alert.service';
 import { CarService } from 'src/app/app/service/car.service';
 import { MakeService } from 'src/app/app/service/make.service';
@@ -20,7 +20,8 @@ export class CarListComponent implements OnInit {
   list : Car[] = [];
 
   constructor(private carService : CarService, private makeService : MakeService,  private alertService: AlertService,
-    private userService : UserService,  private route: ActivatedRoute,   private router: Router, private dialog: MatDialog) { }
+    private userService : UserService,  private route: ActivatedRoute,   private router: Router, private dialog: MatDialog,
+    ) { }
 
   makeList : Make[] = [];
   
@@ -34,18 +35,28 @@ export class CarListComponent implements OnInit {
   async Make_SelectionChange()
   {
       this.list = await this.carService.ListByMakeId(this.makeId);
-      
   }
 
-  openClick() {
-    this.alertService.displaySuccess('tests', 'tests');
-
-    let dialogRef = this.dialog.open(PriceQuizComponent, {
-      height: '400px',
-      width: '600px',
+  async openClick(id:number) {
+   
+    let dialogRef = this.dialog.open<PriceQuizComponent, Tuple<number>>(PriceQuizComponent, {
+      data : { value : id }
     });
 
+    dialogRef.afterClosed().subscribe(async (r : number) => {
 
-
+      if(r){
+        let result = await this.userService.GuessPrice(id, r)
+        if (result.success)
+        {
+          this.alertService.displaySuccess(result.message, 'Congrats');
+        }
+        else {
+          this.alertService.displayWarning(result.message, 'Failed');
+        }
+      }
+    });
   }
+
+  
 }

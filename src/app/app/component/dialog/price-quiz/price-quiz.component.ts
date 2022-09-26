@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Tuple } from 'src/app/app/models';
+import { UserService } from 'src/app/app/service/user.service';
 
 @Component({
   selector: 'app-price-quiz',
@@ -8,9 +10,21 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class PriceQuizComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<PriceQuizComponent>) { }
+  public price : number = 0;
 
-  ngOnInit(): void {
+  constructor(public dialogRef: MatDialogRef<PriceQuizComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: Tuple<number>, private userService : UserService) { 
   }
 
+  ngOnInit(): void {
+    
+  }
+
+  Submit() {
+      this.dialogRef.close(this.price)
+  }
+
+  Cancel() {
+    this.dialogRef.close();
+  }
 }
