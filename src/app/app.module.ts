@@ -33,6 +33,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ToastrModule } from 'ngx-toastr';
 import { PriceQuizComponent } from './app/component/dialog/price-quiz/price-quiz.component';
+import { SettingsComponent } from './app/component/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PriceQuizComponent } from './app/component/dialog/price-quiz/price-quiz
     CarDetailComponent,
     ConfigurationComponent,
     PriceQuizComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

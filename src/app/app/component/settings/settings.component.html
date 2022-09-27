@@ -1,0 +1,26 @@
+
+<table class="mat-table cdk-table mat-elevation-z8" >
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Api</td><td><a [href]="config.apiUrl" target="_blank">{{config.apiUrl}}</a></td>
+        </tr>
+        <tr>
+            <td>Swagger</td><td><a [href]="config.apiUrl + '/swagger'" target="_blank">{{config.apiUrl + '/swagger'}}</a></td>
+        </tr>
+        <tr>
+            <td>Production</td><td>{{ config.production }} </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
